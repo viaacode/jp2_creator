@@ -31,7 +31,7 @@ class Consumer:
         channel.start_consuming()
 
     def callback(self, ch, method, properties, body):
-        status = 'succes'
+        status = 'OK'
         details = 'file successfully converted'
         convert_params = loads(body.decode("utf-8"))
         try:
@@ -39,11 +39,11 @@ class Consumer:
             dest_file_path = join(convert_params['destination_path'], convert_params['destination_file'])
             convert(source_file_path, dest_file_path)
         except Exception as e:
-            status = 'failed'
+            status = 'NOK'
             details = str(e)
 
         message = {
-            "id": convert_params["id"],
+            "correlation_id": convert_params["correlation_id"],
             "status": status,
             "details": details,
             "destination_server": convert_params["destination_server"],
