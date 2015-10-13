@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='jp2worker',
+setup(name='viaa-jp2worker',
       version='0.1',
       description='VIAA tiff to jp2 convertor.',
       long_description='Tiff to jp2 convertor based on RabbitMQ messages.',
