@@ -18,7 +18,6 @@ setup(name='viaa-jp2worker',
       packages=['jp2worker'],
       install_requires=[
           'pika',
-          'wand',
       ],
       entry_points={
           'console_scripts': ['jp2worker=jp2worker.command_line:main'],

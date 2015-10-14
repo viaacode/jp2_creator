@@ -40,7 +40,10 @@ class Consumer:
             convert(source_file_path, dest_file_path)
         except Exception as e:
             status = 'NOK'
-            details = str(e)
+            if type(e).__name__ == 'CalledProcessError':
+                details = str(e.output.decode("utf-8"))
+            else:
+                details = str(type(e)) + ":" + str(e)
 
         message = {
             "correlation_id": convert_params["correlation_id"],
@@ -48,7 +51,7 @@ class Consumer:
             "details": details,
             "destination_server": convert_params["destination_server"],
             "destination_path": convert_params["destination_path"],
-            "destination_file": convert_params["destination_file"],
+            "destination_file": convert_params["destination_file"]
         }
 
         print(dumps(message))
