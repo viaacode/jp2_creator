@@ -7,7 +7,7 @@ __author__ = 'viaa'
 def send_message(host, port, username, password, exchange, routing_key, queue, topic_type, message):
     connection = pika.BlockingConnection(pika.ConnectionParameters(
         host=host,
-        port=port,
+        port=int(port),
         credentials=PlainCredentials(username, password)
     ))
     channel = connection.channel()
