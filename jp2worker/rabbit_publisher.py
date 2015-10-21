@@ -1,3 +1,4 @@
+import logging
 import pika
 from pika.credentials import PlainCredentials
 
@@ -18,3 +19,4 @@ def send_message(host, port, username, password, exchange, routing_key, queue, t
     channel.basic_publish(exchange=exchange, routing_key=routing_key, body=message)
     connection.close()
     print("Message published to: " + exchange + "/" + routing_key)
+    logging.info("Message published to: " + exchange + "/" + routing_key)

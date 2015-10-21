@@ -1,3 +1,4 @@
+import logging
 import pika
 from pika.credentials import PlainCredentials
 from .rabbit_publisher import send_message
@@ -55,6 +56,8 @@ class Consumer:
         }
 
         print(dumps(message))
+        logging.basicConfig(level=logging.INFO, filename="/var/log/jp2worker", filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
+        logging.info(dumps(message))
 
         send_message(
             self.host,
