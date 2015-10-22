@@ -1,4 +1,5 @@
 import logging
+import datetime
 import pika
 from pika.credentials import PlainCredentials
 from .rabbit_publisher import send_message
@@ -52,7 +53,9 @@ class Consumer:
             "details": details,
             "destination_server": convert_params["destination_server"],
             "destination_path": convert_params["destination_path"],
-            "destination_file": convert_params["destination_file"]
+            "destination_file": convert_params["destination_file"],
+            "timestamp": datetime.datetime.now().isoformat()
+
         }
 
         print(dumps(message))
