@@ -1,4 +1,7 @@
+import datetime
 import pika
+import logging
+
 from pika.credentials import PlainCredentials
 from .rabbit_publisher import send_message
 from json import loads, dumps
@@ -51,10 +54,12 @@ class Consumer:
             "details": details,
             "destination_server": convert_params["destination_server"],
             "destination_path": convert_params["destination_path"],
-            "destination_file": convert_params["destination_file"]
+            "destination_file": convert_params["destination_file"],
+            "timestamp": datetime.datetime.now()
         }
 
-        print(dumps(message))
+        json_message = dumps(message)
+        logging.info(json_message)
 
         send_message(
             self.host,
@@ -65,7 +70,7 @@ class Consumer:
             self.result_routing,
             self.result_queue,
             self.topic_type,
-            dumps(message)
+            json_message
         )
 
         ch.basic_ack(delivery_tag=method.delivery_tag)
