@@ -8,10 +8,7 @@ def convert(source_file, destination_file, extra_options):
                            extra_options,
                            "Clevels=5",
                            "Cblk={64,64}",
-                           "Cprecincts={256,256},{256,256},{128,128}",
-                           "Creversible=yes",
-                           "Cuse_sop=yes",
-                           "Corder=LRCP",
-                           "ORGgen_plt=yes",
-                           "ORGtparts=R",
-                           "-rate", "-,1,0.5,0.25"], stderr=STDOUT)
+                           "Corder=RPCL",
+                           "Stiles={1024,1024}",
+                           "Clayers=12",
+                           "-rate", "-,2.5"], stderr=STDOUT)
