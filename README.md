@@ -42,15 +42,26 @@ The worker can be configured with a jp2worker.conf file that has be located in /
 
 ```
 [DEFAULT]
-BROKER_IP=192.168.56.101                #The ip of the RabbitMQ Broker
-BROKER_PORT=5672                        #The port of the RabbitMQ Broker, comment out if not needed. This will default to 5672
-INCOMING_QUEUE=incoming_queue           #The name of the queue the worker will listen to
-RESULT_EXCHANGE=result_exchange         #The name of result exchange where the worker will publish its result messages to
-RESULT_ROUTING=result_routing           #The name of the routing key to be used to publish messages
-RESULT_QUEUE=result_queue               #The name of the result queue if this doesn't exist yet. Comment out if not needed
-TOPIC_TYPE=direct                       #The name of the topic type for the result queue. Comment out if not needed
-USERNAME=guest                          #The username to access the RabbitMQ broker
-PASSWORD=guest                          #The password to access the RabbitMQ broker
+#The ip of the RabbitMQ Broker
+BROKER_IP=192.168.56.101
+#The port of the RabbitMQ Broker, comment out if not needed. This will default to 5672
+BROKER_PORT=5672
+
+#The name of the queue the worker will listen to
+INCOMING_QUEUE=incoming_queue
+#The name of result exchange where the worker will publish its result messages to
+RESULT_EXCHANGE=result_exchange
+#The name of the routing key to be used to publish messages
+RESULT_ROUTING=result_routing
+#The name of the result queue if this doesn't exist yet. Comment out if not needed
+RESULT_QUEUE=result_queue
+#The name of the topic type for the result queue. Comment out if not needed
+TOPIC_TYPE=direct
+
+#The username to access the RabbitMQ broker
+USERNAME=guest
+#The password to access the RabbitMQ broker
+PASSWORD=guest
 ```
 
 # Documentation
