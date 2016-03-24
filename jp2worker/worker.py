@@ -9,7 +9,6 @@ from json import loads, dumps
 from .convertor import convert
 from os.path import join
 
-
 def validate_message(params):
     mandatory_keys = [
         'correlation_id',
@@ -61,8 +60,9 @@ class Consumer:
             convert_params = loads(body.decode("utf-8"))
             if validate_message(convert_params):
                 try:
-                    path = os.path.dirname(convert_params['destination_path'])
+                    path = convert_params['destination_path']
                     self.supermakedirs(path)
+
                     if os.path.exists(convert_params['destination_path']) and os.path.isfile(convert_params['destination_path']):
                         os.remove(convert_params['destination_path'])
 
