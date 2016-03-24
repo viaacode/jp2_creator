@@ -71,7 +71,11 @@ class Consumer:
 
                     source_file_path = join(convert_params['source_path'], convert_params['source_file'])
                     dest_file_path = join(convert_params['destination_path'], convert_params['destination_file'])
-                    convert(source_file_path, dest_file_path)
+                    if 'extra_options' in convert_params:
+                        extra_options = convert_params['extra_options']
+                    else:
+                        extra_options = ''
+                    convert(source_file_path, dest_file_path,extra_options)
                 except Exception as e:
                     status = 'NOK'
                     if type(e).__name__ == 'CalledProcessError':
