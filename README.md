@@ -64,6 +64,13 @@ USERNAME=guest
 PASSWORD=guest
 ```
 
+# Debug
+
+You can use [`pgb`](https://pymotw.com/2/pdb/) to debug in the CLI: 
+```bash
+sudo python3 -m jp2worker.command_line
+```
+
 # Documentation
 
 Any further documentation can be found on the [VIAA Confluence page](https://viaadocumentation.atlassian.net/wiki/display/SI/JP2+creator)
