@@ -40,6 +40,9 @@ class Consumer:
         self.result_routing = arguments.result_routing
         self.result_queue = arguments.result_queue
         self.topic_type = arguments.topic_type
+        self.file_permission = 0o770
+        self.user = ''
+        self.group = ''
 
     def consume(self):
         connection = pika.BlockingConnection(pika.ConnectionParameters(
