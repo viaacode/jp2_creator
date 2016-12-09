@@ -25,6 +25,7 @@ You can run the worker by executing the following command:
 
 ```
     jp2worker [-h] [--broker_ip BROKER_IP]
+                  [--vhost /]
                   [--incoming_queue INCOMING_QUEUE]
                   [--result_exchange RESULT_EXCHANGE]
                   [--result_routing RESULT_ROUTING] [--username USERNAME]
@@ -46,6 +47,8 @@ The worker can be configured with a jp2worker.conf file that has be located in /
 BROKER_IP=192.168.56.101
 #The port of the RabbitMQ Broker, comment out if not needed. This will default to 5672
 BROKER_PORT=5672
+#The virtual host to use
+VHOST=/
 
 #The name of the queue the worker will listen to
 INCOMING_QUEUE=incoming_queue

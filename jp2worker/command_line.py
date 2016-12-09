@@ -95,6 +95,9 @@ def parse_config(arguments, conf_path):
         except KeyError:
             arguments.broker_port = 5672
 
+    if config['VHOST']:
+        arguments.vhost = config['VHOST']
+
     if arguments.result_queue is None:
         try:
             arguments.result_queue = config['RESULT_QUEUE']
