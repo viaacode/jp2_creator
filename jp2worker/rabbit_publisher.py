@@ -17,6 +17,7 @@ def send_message(host, port, vhost, username, password, exchange, routing_key, q
         channel.exchange_declare(exchange=exchange, type=topic_type)
         channel.queue_declare(queue=queue, durable=True)
         channel.queue_bind(queue=queue, exchange=exchange, routing_key=routing_key)
-    channel.basic_publish(exchange=exchange, routing_key=routing_key, body=message)
+    channel.basic_publish(exchange=exchange, routing_key=routing_key, body=message,
+                          properties=pika.BasicProperties(delivery_mode=2))
     connection.close()
     logging.info("Message published to: " + exchange + "/" + routing_key)
