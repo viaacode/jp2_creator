@@ -130,7 +130,8 @@ def check_arguments(arguments):
 
     if arguments.password is None:
         close("No password specified")
-
+    if arguments.vhost is None:
+        arguments.vhost = config['VHOST']
 
 def close(message):
     logging.error(message)
