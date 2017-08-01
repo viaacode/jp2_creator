@@ -2,7 +2,7 @@ from subprocess import check_output, STDOUT
 
 
 def convert(source_file, destination_file, extra_options):
-    validatefile(source_file)
+    #validatefile(source_file)
     tojp2(source_file, destination_file, extra_options)
 
 

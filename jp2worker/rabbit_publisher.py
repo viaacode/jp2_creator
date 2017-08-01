@@ -14,7 +14,7 @@ def send_message(host, port, vhost, username, password, exchange, routing_key, q
     ))
     channel = connection.channel()
     if queue is not None and topic_type is not None:
-        channel.exchange_declare(exchange=exchange, type=topic_type)
+        channel.exchange_declare(exchange=exchange,exchange_type=topic_type)
         channel.queue_declare(queue=queue, durable=True)
         channel.queue_bind(queue=queue, exchange=exchange, routing_key=routing_key)
     channel.basic_publish(exchange=exchange, routing_key=routing_key, body=message,
