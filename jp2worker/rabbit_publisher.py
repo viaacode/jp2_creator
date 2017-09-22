@@ -1,4 +1,5 @@
 import pika
+import time
 import logging
 from pika.credentials import PlainCredentials
 
@@ -19,5 +20,6 @@ def send_message(host, port, vhost, username, password, exchange, routing_key, q
         channel.queue_bind(queue=queue, exchange=exchange, routing_key=routing_key)
     channel.basic_publish(exchange=exchange, routing_key=routing_key, body=message,
                           properties=pika.BasicProperties(delivery_mode=2))
+    time.sleep(2)
     connection.close()
     logging.info("Message published to: " + exchange + "/" + routing_key)
